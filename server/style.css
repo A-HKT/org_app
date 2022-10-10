@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+/* 共通部分 
+-----------------------*/
+html {
+    font-size: 100%;
+}
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #514646;
+    background: #fdfcf6;
+}
+ul {
+    padding-inline-start: 0px;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #514646;
+}
+img {
+    max-width: 100%;
+}
+
+/* コンテンツ全体に対する指定 */
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+/* ヘッダー 
+-----------------------*/
+.page_header {
+    display: flex;
+    background: #b3dee0;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    left: 0;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 9999;
+}
+.page_header a {
+    padding: 0 10%;
+}
+.top_menu {
+    padding: 0 10%;
+}
+.menu_nav {
+    display: flex;
+    font-size: 15px;
+    justify-content: flex-end;
+
+}
+.menu_nav li {
+    float: left;
+    text-align: center;
+    width: 100px;
+}
+.main_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+}
+.main_title {
+    padding-top: 60px;
+}
+.main_title h2 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 80px;
+    text-align: left;
+    letter-spacing: 0.1em;
+    line-height: 0.9em;
+    color: #fdd9aa;
+    z-index: 1;
+}
+.main_title h3 {
+    margin-block-start: 1em;
+    margin-block-end: 0;
+}
+.main_image {
+    padding-top: 60px;
+    position: relative;
+    width: 400px;
+    height: auto;
+}
+
+
+/* フッター 
+-----------------------*/
