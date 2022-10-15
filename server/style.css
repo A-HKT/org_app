@@ -30,6 +30,10 @@ img {
     margin: 0 auto;
     padding: 0 auto;
 }
+/* フォーム */
+.input[type='checkbox'] {}
+.input[type='text'] {}
+
 
 /* ヘッダー 
 -----------------------*/
@@ -62,6 +66,8 @@ img {
     text-align: center;
     width: 100px;
 }
+/* メイン画面(ヘッダー下)
+-----------------------*/
 .main_content {
     display: flex;
     justify-content: space-between;
@@ -92,7 +98,18 @@ img {
     width: 400px;
     height: auto;
 }
-
+/* フォーム画面
+-----------------------*/
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #7b7a77;
+}
+.contents_form {
+    display: flex;
+    align-items: center;
+}
 
 /* フッター 
 -----------------------*/
+
