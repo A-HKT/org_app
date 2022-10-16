@@ -18,13 +18,15 @@ li {
 }
 a {
     text-decoration: none;
-    color: #514646;
 }
 img {
     max-width: 100%;
 }
 
 /* コンテンツ全体に対する指定 */
+main {
+    margin-top: 15vh;
+}
 .wrapper {
     width: 80%;
     margin: 0 auto;
@@ -47,6 +49,7 @@ img {
 }
 .page_header a {
     padding: 0 10%;
+    color: #514646;
 }
 .top_menu {
     padding: 0 10%;
@@ -132,32 +135,31 @@ img {
     text-align: left;
     width: 150px;
 }
-.text_item {
-    width: 300px;
-}
 .form_btn {
     display: flex;
     justify-content: center;
     font-size: 20px;
     font-weight: bold;
-    border: 1px solid #e9e7e7;
+    border: 1px solid #fdfcf6;
     border-radius: 15px;
     width: 10%;
     margin: 30px auto;
 }
-input[type="number"] {
+input{
     width: 100%;
     font-weight: 300;
     border: 1px solid;
     border-radius: 5px;
     padding: 5px;
+    height: 1em;
 }
 input[type="text"] {
-    width: 100%;
+    width: 200px;
     font-weight: 300;
     border: 1px solid;
     border-radius: 5px;
     padding: 5px;
+    height: 1em;
 }
 
 /* 検索画面
@@ -166,17 +168,50 @@ input[type="text"] {
     background-color: #8bd1a0;
     color: #fdfcf6;
 }
-/* 登録画面
+
+/* 登録画面(post)
 -----------------------*/
-.record h1 {
+.post h1 {
     font-size: 30px;
-    margin-top: 15vh;
     text-align: center;
     color: #b3dee0;
 }
-.record_btn {
+.post_btn {
     background-color: #fbb75f;
     color: #fdfcf6;
 }
+
+/* 検索結果画面(show)
+-----------------------*/
+.show h1 {
+    font-size: 30px;
+    text-align: center;
+    color: #fdd9aa;
+}
+/* ログイン画面(login)
+-----------------------*/
+.login h1 {
+    font-size: 30px;
+    text-align: center;
+    color: #514646;
+}
+.login_form {
+    width: 30%;
+}
+.user_item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: auto 1em;
+}
+.user_item p {
+    color: #66cbd0;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+    width: 35%;
+}
+
+
 /* フッター 
 -----------------------*/

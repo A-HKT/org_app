@@ -8,23 +8,11 @@ require_once __DIR__ . '/config.php';
 
 <!DOCTYPE html>
 <html lang="ja">
-<!--ヘッダーの設定ファイルを読み込む-->
+<!--ヘッダーのファイルを読み込む-->
 <?php include_once __DIR__ . '/_head.html' ?>
 
 <body>
-    <header>
-        <div class="page_header wrapper">
-            <a href="index.php">記事検索データベース</a>
-            <nav class="top_menu">
-                <ul class="menu_nav">
-                    <li><a href="index.php">Top</a></li>
-                    <li><a href="logout.php">ログアウト</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section class="main_content wrapper">
+    <main class="main_content wrapper">
         <div class="main_title">
             <h2>
                 <span>Article</span><br>
@@ -34,10 +22,10 @@ require_once __DIR__ . '/config.php';
             <h3>見たい記事がすぐに見つかる！</h3>
         </div>
         <img class="main_image" src="images\main_image.png" alt="main">
-    </section>
+    </main>
 
     <section class="seach_form form">
-        <h2>SEACH</h2>
+        <h2>SEARCH</h2>
         <div class="category_form form_contents">
             <div class="form_items">
                 <p>カテゴリ</p>
@@ -138,16 +126,16 @@ require_once __DIR__ . '/config.php';
         </div>
     </section>
     <div class="form_contents">
-        <button type="submit" class="search_btn form_btn">
+        <a href="show.php" class="search_btn form_btn">
             <span>検索</span>
+        </a>
         </button>
     </div>
-    
     <!--エラー時のエラーメッセージ出力-->
-    <!--?php include_once __DIR__ . '_errors.php' ?>
+    <?php include_once __DIR__ . '_errors.php' ?>
 
 
-
+    <!--フッター>
+    <?php include_once __DIR__ . '/_footer.html' ?>
 </body>
-
 </html>
