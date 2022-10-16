@@ -62,19 +62,16 @@ img {
     text-align: center;
     width: 100px;
 }
+
 /* メイン画面(ヘッダー下)
 -----------------------*/
 .main_content {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 60%;
 }
-.main_title {
-    padding-top: 60px;
-}
 .main_title h2 {
-    margin-block-start: 0;
     margin-block-end: 0;
     font-family: 'Poppins', sans-serif;
     font-size: 70px;
@@ -94,7 +91,8 @@ img {
     width: 400px;
     height: auto;
 }
-/* フォーム画面
+
+/* フォーム画面全体
 -----------------------*/
 .form {
     width: 60%;
@@ -105,10 +103,10 @@ img {
     font-family: 'Poppins', sans-serif;
     color: #fdfcf6;
     background-color: #514646;
-    width: 4em;
+    width: 4.5em;
     font-size: 1em;
     text-align: left;
-    padding-left:10px;
+    padding-left: 10px;
 }
 .form_contents p {
     color: #66cbd0;
@@ -122,9 +120,6 @@ img {
     align-items: center;
     border-bottom: 2px solid #fdfcf6;
     padding: 1em;
-}
-.last_form_items {
-    border-bottom:none;
 }
 .item_box {
     display: flex;
@@ -150,10 +145,31 @@ img {
     width: 10%;
     margin: 30px auto;
 }
+input[type="text"] {
+    width: 100%;
+    font-weight: 300;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* 検索画面
+-----------------------*/
 .search_btn {
     background-color: #8bd1a0;
     color: #fdfcf6;
 }
-
+/* 登録画面
+-----------------------*/
+.record h1 {
+    font-size: 30px;
+    margin-top: 15vh;
+    text-align: center;
+    color: #b3dee0;
+}
+.record_btn {
+    background-color: #fbb75f;
+    color: #fdfcf6;
+}
 /* フッター 
 -----------------------*/
