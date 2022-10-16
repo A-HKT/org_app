@@ -23,6 +23,7 @@ require_once __DIR__ . '/config.php';
             </nav>
         </div>
     </header>
+
     <section class="main_content wrapper">
         <div class="main_title">
             <h2>
@@ -126,7 +127,7 @@ require_once __DIR__ . '/config.php';
             </div>
         </div>
         <div class="keyword_form form_contents">
-            <div class="form_items last_form_items">
+            <div class="form_items">
                 <p>キーワード</p>
                 <div class="item_box">
                     <div class="item text_item">
@@ -144,7 +145,7 @@ require_once __DIR__ . '/config.php';
     </div>
     
     <!--エラー時のエラーメッセージ出力-->
-    <!-- ?php include_once __DIR__ . '_errors.php' ?>
+    <!--?php include_once __DIR__ . '_errors.php' ?>
 
 
 
