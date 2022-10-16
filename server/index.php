@@ -37,7 +37,7 @@ require_once __DIR__ . '/config.php';
 
     <section class="seach_form form">
         <h2>SEACH</h2>
-        <div class="form_contents">
+        <div class="category_form form_contents">
             <div class="form_items">
                 <p>カテゴリ</p>
                 <div class="item_box">
@@ -84,7 +84,7 @@ require_once __DIR__ . '/config.php';
                 </div>
             </div>
         </div>
-        <div class="form_contents">
+        <div class="season_form form_contents">
             <div class="form_items">
                 <p>時期</p>
                 <div class="item_box">
@@ -111,13 +111,38 @@ require_once __DIR__ . '/config.php';
                 </div>
             </div>
         </div>
-        <div class="form_contents">
-            <button type="submit" class="search_btn form_btn">
-                <span>検索</span>
-                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-            </button>
+        <div class="year_form form_contents">
+            <div class="form_items">
+                <p>発行年</p>
+                <div class="item_box">
+                    <div class="item">
+                        <input type="text" name="year" value=''>
+                    </div>
+                    <div class="item">
+                        <input type="checkbox" name="category" value='noseason'>
+                        <span>指定なし</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="keyword_form form_contents">
+            <div class="form_items last_form_items">
+                <p>キーワード</p>
+                <div class="item_box">
+                    <div class="item text_item">
+                        <input type="text" name="year" value=''>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+    <div class="form_contents">
+        <button type="submit" class="search_btn form_btn">
+            <span>検索</span>
+            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
+    
     <!--エラー時のエラーメッセージ出力-->
     <!-- ?php include_once __DIR__ . '_errors.php' ?>
 
