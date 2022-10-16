@@ -107,7 +107,7 @@ require_once __DIR__ . '/config.php';
                     <p>発行年</p>
                     <div class="item_box">
                         <div class="item">
-                            <input type="text" name="year" value=''>
+                            <input type="number" name="year" value=''>
                         </div>
                         <div class="item">
                             <input type="checkbox" name="category" value='noseason'>
@@ -117,11 +117,21 @@ require_once __DIR__ . '/config.php';
                 </div>
             </div>
             <div class="keyword_form form_contents">
-                <div class="form_items last_form_items">
-                    <p>キーワード</p>
+                <div class="form_items">
+                    <p>タイトル</p>
                     <div class="item_box">
                         <div class="item text_item">
                             <input type="text" name="year" value=''>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="upload_form form_contents">
+                <div class="form_items">
+                    <p>アップロード</p>
+                    <div class="item_box">
+                        <div class="item image_item">
+                            <input type="file" name="upload_file" accept="image/jpeg, image/png">
                         </div>
                     </div>
                 </div>
@@ -130,7 +140,6 @@ require_once __DIR__ . '/config.php';
         <div class="form_contents">
             <button type="submit" class="record_btn form_btn">
                 <span>登録</span>
-                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
             </button>
         </div>
     </div>

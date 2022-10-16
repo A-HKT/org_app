@@ -117,7 +117,7 @@ require_once __DIR__ . '/config.php';
                 <p>発行年</p>
                 <div class="item_box">
                     <div class="item">
-                        <input type="text" name="year" value=''>
+                        <input type="number" name="year" value=''>
                     </div>
                     <div class="item">
                         <input type="checkbox" name="category" value='noseason'>
@@ -140,7 +140,6 @@ require_once __DIR__ . '/config.php';
     <div class="form_contents">
         <button type="submit" class="search_btn form_btn">
             <span>検索</span>
-            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
         </button>
     </div>
     
