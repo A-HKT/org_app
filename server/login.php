@@ -7,7 +7,6 @@ require_once __DIR__ . '/config.php';
 session_start();
 
 //変数の初期化
-$current_user = '';
 $user_id = '';
 $email = '';
 $password = '';
@@ -15,7 +14,7 @@ $errors = [];
 
 // ログイン判定(ログイン済ならリダイレクト)
 if (isset($_SESSION['current_user'])) {
-    header('Location: /index.php');
+    header('Location: index.php');
     exit;
 }
 
