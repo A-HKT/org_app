@@ -177,6 +177,17 @@ input[type="text"] {
     padding: 5px;
     height: 1em;
 }
+/* エラー表示
+-----------------------*/
+.errors {
+    margin: 10px 0;
+}
+.errors li {
+    margin-top: 5px;
+    color: #ec008c;
+    text-align: center;
+    list-style: none;
+}
 
 /* 検索画面
 -----------------------*/
@@ -206,6 +217,10 @@ input[type="text"] {
 }
 /* ログイン画面(login)
 -----------------------*/
+.login_btn {
+    background-color: #8bd1a0;
+    color: #fdfcf6;
+}
 .login h1 {
     font-size: 30px;
     text-align: center;
