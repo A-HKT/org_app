@@ -4,8 +4,6 @@ require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/config.php';
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <!--ヘッダーのファイルを読み込む-->
@@ -131,11 +129,8 @@ require_once __DIR__ . '/config.php';
         </a>
         </button>
     </div>
+
     <!--エラー時のエラーメッセージ出力-->
     <?php include_once __DIR__ . '_errors.php' ?>
-
-
-    <!--フッター>
-    <?php include_once __DIR__ . '/_footer.html' ?>
 </body>
 </html>

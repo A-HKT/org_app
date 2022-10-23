@@ -7,11 +7,9 @@ define('USER', 'testuser');
 define('PASSWORD', '9999');
 
 // エラーメッセージを定数として定義
-define('MSG_TITLE_REQUIRED', 'タスク名を入力してください');
-define('MSG_TITLE_NO_CHANGE', 'タスク名が変更されていません');
+define('MSG_USERID_REQUIRED', 'IDを入力してください');
+define('MSG_EMAIL_REQUIRED', 'メールアドレスを入力してください');
+define('MSG_PASSWORD_REQUIRED', 'パスワードを入力してください');
+define('MSG_EMAIL_PASSWORD_NOT_MATCH', 'メールアドレスかパスワードが間違っています')
 
-// doneの状態を定数として定義
-define('TASK_NOTYET', 0);
-define('TASK_DONE', 1);
-
-
+?>
