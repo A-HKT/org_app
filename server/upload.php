@@ -2,7 +2,35 @@
 //設定ファイルを読み込む
 require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/config.php';
+
+// セッション開始
+session_start();
+// 初期化
+$current_user = '';
+$description = '';
+$upload_file = '';
+$upload_tmp_file = '';
+$errors = [];
+
+// ログイン状態の確認(ログイン時のみupload.phpにアクセス可)
+if (empty($_SESSION['current_user'])) {
+    header('Location: login.php');
+    exit;
+}
+$current_user = $_SESSION['current_user'];
+
+// アップロードしたファイルの情報を受け取る
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+         // 画像の説明文
+    $description = filter_input(INPUT_POST, 'description');
+         // アップロードした画像のファイル名
+    $upload_file = $_FILES['image']['name'];
+         // サーバー上で一時的に保存されるテンポラリファイル名
+    $upload_tmp_file = $_FILES['image']['tmp_name'];
+
+    $errors = insert_validate($description, $upload_file);
 ?>
+
 
 
 
@@ -132,12 +160,6 @@ require_once __DIR__ . '/config.php';
             </button>
         </div>
     </main>
-
-    <!--エラー時のエラーメッセージ出力-->
-    <!-- ?php include_once __DIR__ . '_errors.php' ?>
-
-
-
 </body>
 
 </html>

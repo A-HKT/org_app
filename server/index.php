@@ -2,6 +2,14 @@
 //設定ファイルを読み込む
 require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/config.php';
+
+// セッション開始
+session_start();
+$current_user = '';
+
+if (isset($_SESSION['current_user'])) {
+    $current_user = $_SESSION['current_user'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -133,4 +141,5 @@ require_once __DIR__ . '/config.php';
     <!--エラー時のエラーメッセージ出力-->
     <?php include_once __DIR__ . '_errors.php' ?>
 </body>
+
 </html>
