@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <main class="login">
         <h1>ログイン画面</h1>
-        
+
         <!--エラー時のエラーメッセージ出力-->
         <?php include_once __DIR__ . '/_errors.php' ?>
 

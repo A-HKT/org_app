@@ -10,7 +10,8 @@ define('PASSWORD', '9999');
 define('MSG_USERID_REQUIRED', 'IDを入力してください');
 define('MSG_EMAIL_REQUIRED', 'メールアドレスを入力してください');
 define('MSG_PASSWORD_REQUIRED', 'パスワードを入力してください');
-define('MSG_EMAIL_PASSWORD_NOT_MATCH', '入力した内容に誤りがあります');
+define('MSG_EMAIL_PASSWORD_NOT_MATCH', '登録内容と合致しません');
+
 // アップロード画像のエラーメッセージ
 define('MSG_NO_DESCRIPTION', '詳細を入力してください');
 define('MSG_NO_IMAGE', 'ファイルを選択してください');

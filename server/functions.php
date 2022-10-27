@@ -47,7 +47,7 @@ function login_validate($user_id, $email, $password)
     return $errors;
 }
 
-// ユーザーが登録されているか確認する関数
+// ユーザーが登録されているか確認する関数(emailをキーにする)
 function find_user_by_email($email){
     $dbh = connect_db();
     $sql = <<<EOM
@@ -73,3 +73,26 @@ function user_login($user)
     header('Location: index.php');
     exit;
 }
+
+// 画像アップ時のバリデーション関数
+function insert_validate($description, $upload_file)
+{
+    // 初期化
+    $errors = [];
+    // エラーメッセージをconfig.phpで定義
+    if (empty($description)) {
+        $errors[] = MSG_NO_DESCRIPTION;
+    }
+    if (empty($upload_file)) {
+        $errors[] =
+        MSG_NO_IMAGE;
+    // ファイルの拡張子をチェックする関数
+    }else {
+    if (check_file_ext($upload_file)) {
+        $errors[] = MSG_NOT_ABLE_EXT;
+    }
+}
+    return $errors;
+}
+
+
