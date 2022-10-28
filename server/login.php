@@ -25,10 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = filter_input(INPUT_POST, 'password');
     $errors = login_validate($user_id, $email, $password);
 
+
     // エラーがなかったらユーザー情報を抽出
     if (empty($errors)) {
         $user = find_user_by_email($email);
-        if (!empty($user) && password_verify($password, $user['password'])) {
+        if (!empty($user) && $password == $user['password']) {
             user_login($user);
         } else {
             $errors[] = MSG_EMAIL_PASSWORD_NOT_MATCH;
@@ -40,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="ja">
 
-<!--ヘッダーの設定ファイルを読み込む-->
 <?php include_once __DIR__ . '/_head.html' ?>
 
 <body>

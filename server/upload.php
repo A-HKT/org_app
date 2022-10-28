@@ -34,6 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // ファイルの拡張子に問題なければファイル名変更(日付を入れる)
 if (empty($errors)) {
     $image_name = date('YmdHis') . '_' . $upload_file;
+    //filesフォルダに保存
+    $path = '../files/' . $image_name;
+    move_uploaded_file($upload_tmp_file, $path);
 }
 ?>
 

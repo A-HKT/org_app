@@ -48,7 +48,8 @@ function login_validate($user_id, $email, $password)
 }
 
 // ユーザーが登録されているか確認する関数(emailをキーにする)
-function find_user_by_email($email){
+function find_user_by_email($email)
+{
     $dbh = connect_db();
     $sql = <<<EOM
     SELECT
@@ -68,8 +69,8 @@ function find_user_by_email($email){
 // ログイン処理(セッションにデータを一次保存)するための関数
 function user_login($user)
 {
-    $_SESSION['current_user']['id'] = $user['id'];
-    $_SESSION['current_user']['name'] = $user['name'];
+    $_SESSION['current_user']['id'] = $user['user_id'];
+    $_SESSION['current_user']['email'] = $user['email'];
     header('Location: index.php');
     exit;
 }
@@ -85,14 +86,38 @@ function insert_validate($description, $upload_file)
     }
     if (empty($upload_file)) {
         $errors[] =
-        MSG_NO_IMAGE;
-    // ファイルの拡張子をチェックする関数
-    }else {
-    if (check_file_ext($upload_file)) {
-        $errors[] = MSG_NOT_ABLE_EXT;
+            MSG_NO_IMAGE;
+        // ファイルの拡張子をチェック(関数呼び出す)
+    } else {
+        if (check_file_ext($upload_file)) {
+            $errors[] = MSG_NOT_ABLE_EXT;
+        }
     }
-}
     return $errors;
 }
 
+// ファイルの拡張子を取得する関数
+function check_file_ext($upload_file)
+{
+    $file_ext = pathinfo($upload_file, PATHINFO_EXTENSION);
+    if (!in_array($file_ext, EXTENTION)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
+// ファイルの情報をデータベースに保存する
+// function insert_file($user_id, $image_name, $description)
+// {
+//     try{
+//         $dbh = connect_db();
+//         $sql = <<<EOM
+//         INSERT INTO
+//         files(user_id,file,discription);
+//         EOM;
+
+//         $stmt = $dbh->prepare($sql);
+
+//     }
+// }
