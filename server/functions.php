@@ -47,7 +47,7 @@ function login_validate($user_id, $email, $password)
     return $errors;
 }
 
-// ユーザーが登録されているか確認する関数(emailをキーにする)
+// ログイン時、ユーザーが登録されているか確認する関数(emailをキーにする)
 function find_user_by_email($email)
 {
     $dbh = connect_db();
@@ -69,29 +69,41 @@ function find_user_by_email($email)
 // ログイン処理(セッションにデータを一次保存)するための関数
 function user_login($user)
 {
-    $_SESSION['current_user']['id'] = $user['user_id'];
+    $_SESSION['current_user']['user_id'] = $user['user_id'];
     $_SESSION['current_user']['email'] = $user['email'];
     header('Location: index.php');
     exit;
 }
 
-// 画像アップ時のバリデーション関数
-function insert_validate($description, $upload_file)
+// ファイルアップロード時のバリデーション関数
+function insert_validate($upload_file, $category, $season, $year, $file_name, $description)
 {
     // 初期化
     $errors = [];
     // エラーメッセージをconfig.phpで定義
-    if (empty($description)) {
-        $errors[] = MSG_NO_DESCRIPTION;
-    }
     if (empty($upload_file)) {
         $errors[] =
-            MSG_NO_IMAGE;
+            MSG_NO_FILE;
         // ファイルの拡張子をチェック(関数呼び出す)
     } else {
         if (check_file_ext($upload_file)) {
             $errors[] = MSG_NOT_ABLE_EXT;
         }
+    }
+    if (empty($category)) {
+        $errors[] = MSG_NO_CATEGORY;
+    }
+    if (empty($season)) {
+        $errors[] = MSG_NO_SEASON;
+    }
+    if (empty($year)) {
+        $errors[] = MSG_NO_YEAR;
+    }
+    if (empty($file_name)) {
+        $errors[] = MSG_NO_FILENAME;
+    }
+    if (empty($description)) {
+        $errors[] = MSG_NO_DESCRIPTION;
     }
     return $errors;
 }
@@ -106,18 +118,33 @@ function check_file_ext($upload_file)
         return false;
     }
 }
+//入力情報をデータベース(files）に登録
+function insert_file($category, $season, $year, $file_name, $description, $upload_file, $origin_name)
+{
+    try {
+        $dbh = connect_db();
 
-// ファイルの情報をデータベースに保存する
-// function insert_file($user_id, $image_name, $description)
-// {
-//     try{
-//         $dbh = connect_db();
-//         $sql = <<<EOM
-//         INSERT INTO
-//         files(user_id,file,discription);
-//         EOM;
+        $sql = <<<EOM
+        INSERT INTO 
+            files
+            (user_id, category ,season, year, file_name, description, origin) 
+        VALUES 
+            (:user_id, :category, :season, :year, :file_name, :description, :origin);
+        EOM;
+        $stmt = $dbh->prepare($sql);
 
-//         $stmt = $dbh->prepare($sql);
+        //$stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':category', $category, PDO::PARAM_STR);
+        $stmt->bindValue(':season', $season, PDO::PARAM_STR);
+        $stmt->bindValue(':year', $year, PDO::PARAM_INT);
+        $stmt->bindValue(':file_name', $file_name, PDO::PARAM_STR);
+        $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+        $stmt->bindValue(':origin', $origin_name, PDO::PARAM_STR);
+        $stmt->execute();
 
-//     }
-// }
+        return true;
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+        return false;
+    }
+}

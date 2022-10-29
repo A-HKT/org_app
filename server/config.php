@@ -13,8 +13,12 @@ define('MSG_PASSWORD_REQUIRED', 'パスワードを入力してください');
 define('MSG_EMAIL_PASSWORD_NOT_MATCH', '登録内容と合致しません');
 
 // アップロード画像のエラーメッセージ
+define('MSG_NO_FILE', 'ファイルを選択してください');
+define('MSG_NO_CATEGORY', 'カテゴリを選択してください');
+define('MSG_NO_SEASON', '発行時期を選択してください');
+define('MSG_NO_YEAR', '発行年を入力してください');
+define('MSG_NO_FILENAME', 'タイトルを入力してください');
 define('MSG_NO_DESCRIPTION', '詳細を入力してください');
-define('MSG_NO_IMAGE', 'ファイルを選択してください');
 
 // アップロード画像の拡張子のエラーメッセージ
 define('EXTENTION', ['pdf', 'jpg', 'jpeg', 'png', 'gif', 'webp']);
