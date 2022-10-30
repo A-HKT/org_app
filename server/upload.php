@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $upload_tmp_file = $_FILES['upload_file']['tmp_name'];
 
     // 各データを変数に格納
-    $category = filter_input(INPUT_POST, 'category_id');
+    $category = filter_input(INPUT_POST, 'category');
     $season = filter_input(INPUT_POST, 'season');
     $year = filter_input(INPUT_POST, 'year');
     $file_name = filter_input(INPUT_POST, 'file_name');
