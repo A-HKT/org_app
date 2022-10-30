@@ -130,16 +130,16 @@ function insert_file($user_id, $upload_file, $category, $season, $year, $file_na
         $sql = <<<EOM
         INSERT INTO 
             files
-            (user_id, category ,season, year, file_name, description) 
+            (user_id, category_id ,season_id, year_data, file_name, description) 
         VALUES 
-            (:user_id, :category, :season, :year, :file_name, :description);
+            (:user_id, :category_id, :season_id, :year_data, :file_name, :description);
         EOM;
 
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt->bindValue(':category', $category, PDO::PARAM_STR);
-        $stmt->bindValue(':season', $season, PDO::PARAM_STR);
-        $stmt->bindValue(':year', $year, PDO::PARAM_INT);
+        $stmt->bindValue(':category_id', $category, PDO::PARAM_STR);
+        $stmt->bindValue(':season_id', $season, PDO::PARAM_STR);
+        $stmt->bindValue(':year_data', $year, PDO::PARAM_INT);
         $stmt->bindValue(':file_name', $file_name, PDO::PARAM_STR);
         $stmt->bindValue(':description', $description, PDO::PARAM_STR);
         $stmt->execute();
