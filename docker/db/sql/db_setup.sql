@@ -7,27 +7,32 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS files (
     id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
-    image VARCHAR(255) NOT NULL,
-    category INT NOT NULL,
-    season INT NOT NULL,
-    year INT NOT NULL,
+    upload_file VARCHAR(255) NOT NULL,
+    category_id INT NOT NULL,
+    season_id INT NOT NULL,
+    year_data INT NOT NULL,
     file_name VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT fk_user_id
-    FOREIGN KEY (user_id)
-        REFERENCES users(user_id)
-        ON DELETE RESTRICT ON UPDATE RESTRICT
-    FOREIGN KEY (category_id)
-        REFERENCES categories(category_id)
-        ON DELETE RESTRICT ON UPDATE RESTRICT
-    FOREIGN KEY (season_id)
-        REFERENCES seasons(season_id)
-        ON DELETE RESTRICT ON UPDATE RESTRICT
-    FOREIGN KEY (year_data)
-        REFERENCES years(year_data)
-        ON DELETE RESTRICT ON UPDATE RESTRICT
+CONSTRAINT fk_user_id
+FOREIGN KEY (user_id)
+    REFERENCES users(user_id)
+    ON DELETE RESTRICT ON UPDATE RESTRICT,
+FOREIGN KEY (category_id)
+    REFERENCES categories(category_id)
+    ON DELETE RESTRICT ON UPDATE RESTRICT,
+FOREIGN KEY (season_id)
+    REFERENCES seasons(season_id)
+    ON DELETE RESTRICT ON UPDATE RESTRICT,
+FOREIGN KEY (year_data)
+    REFERENCES years(year_data)
+    ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+CREATE TABLE categories (
+category_id INT NOT NULL PRIMARY KEY,
+category VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS seasons (

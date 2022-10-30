@@ -60,6 +60,10 @@ function find_user_by_email($email)
         email = :email;
     EOM;
 
+    // プリペアドステートメント(可変部分を変数に)準備
+    // パラメータのバインド(パラメータと値を紐づけ)
+    // プリペアドステートメントの実行
+    //取得結果を配列で受け取る
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
@@ -119,27 +123,25 @@ function check_file_ext($upload_file)
     }
 }
 //入力情報をデータベース(files）に登録
-function insert_file($category, $season, $year, $file_name, $description, $upload_file, $origin_name)
+function insert_file($user_id, $upload_file, $category, $season, $year, $file_name, $description)
 {
     try {
         $dbh = connect_db();
-
         $sql = <<<EOM
         INSERT INTO 
             files
-            (user_id, category ,season, year, file_name, description, origin) 
+            (user_id, category ,season, year, file_name, description) 
         VALUES 
-            (:user_id, :category, :season, :year, :file_name, :description, :origin);
+            (:user_id, :category, :season, :year, :file_name, :description);
         EOM;
-        $stmt = $dbh->prepare($sql);
 
-        //$stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->bindValue(':category', $category, PDO::PARAM_STR);
         $stmt->bindValue(':season', $season, PDO::PARAM_STR);
         $stmt->bindValue(':year', $year, PDO::PARAM_INT);
         $stmt->bindValue(':file_name', $file_name, PDO::PARAM_STR);
         $stmt->bindValue(':description', $description, PDO::PARAM_STR);
-        $stmt->bindValue(':origin', $origin_name, PDO::PARAM_STR);
         $stmt->execute();
 
         return true;

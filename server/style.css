@@ -75,6 +75,7 @@ main {
     width: 60%;
 }
 .main_title h2 {
+    margin-block-start: 0;
     margin-block-end: 0;
     font-family: 'Poppins', sans-serif;
     font-size: 70px;
@@ -85,8 +86,9 @@ main {
     z-index: 1;
 }
 .main_title h3 {
-    margin-block-start: 1em;
-    margin-block-end: 0;
+    margin: 25px auto;
+    color: #aeaeae;
+    font-size: 20px;
 }
 .main_image {
     padding-top: 60px;
@@ -110,6 +112,7 @@ main {
     font-size: 1em;
     text-align: left;
     padding-left: 10px;
+    margin-block-start: 0;
 }
 .form_contents p {
     color: #66cbd0;
@@ -143,7 +146,7 @@ main {
     border: 1px solid #fdfcf6;
     border-radius: 15px;
     width: 10%;
-    margin: 30px auto;
+    margin: 30px auto 50px;
 }
 input[type="number"] {
     width: 100%;
@@ -182,6 +185,22 @@ textarea {
     border-radius: 5px;
     padding: 5px;
 }
+.information {
+    width: 60%;
+    display: flex;
+    justify-content: right;
+    margin: 0 auto;
+}
+.information a {
+    color: #514646;
+    font-size: 1em;
+    padding-right: 3%;
+}
+.information span {
+    color: #f8ab47;
+    font-weight: bold;
+}
+
 
 /* エラー表示
 -----------------------*/
@@ -190,7 +209,7 @@ textarea {
 }
 .errors li {
     margin-top: 5px;
-    color: #ec008c;
+    color: #eb365a;
     text-align: center;
     list-style: none;
 }
