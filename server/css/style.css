@@ -270,3 +270,18 @@ textarea {
 
 /* フッター 
 -----------------------*/
+
+
+/* レスポンシブ */
+@media (max-width: 900px) {
+    /* upload.php */
+    form {
+    width: 70%;
+    }
+}
+
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+    }
+}

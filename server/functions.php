@@ -86,8 +86,7 @@ function insert_validate($upload_file, $category, $season, $year, $file_name, $d
     $errors = [];
     // エラーメッセージをconfig.phpで定義
     if (empty($upload_file)) {
-        $errors[] =
-            MSG_NO_FILE;
+        $errors[] = MSG_NO_FILE;
         // ファイルの拡張子をチェック(関数呼び出す)
     } else {
         if (check_file_ext($upload_file)) {
@@ -123,25 +122,26 @@ function check_file_ext($upload_file)
     }
 }
 //入力情報をデータベース(files）に登録
-function insert_file($user_id, $upload_file, $category, $season, $year, $file_name, $description)
+function insert_file($user_id, $image_name, $category, $season, $year, $file_name, $description)
 {
     try {
         $dbh = connect_db();
         $sql = <<<EOM
         INSERT INTO 
             files
-            (user_id, category_id ,season_id, year_data, file_name, description) 
+            (user_id, image, category_id ,season_id, year_data, file_name, description) 
         VALUES 
-            (:user_id, :category_id, :season_id, :year_data, :file_name, :description);
+            (:user_id, :image, :category_id, :season_id, :year_data, :file_name, :description);
         EOM;
 
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt->bindValue(':category_id', $category, PDO::PARAM_STR);
-        $stmt->bindValue(':season_id', $season, PDO::PARAM_STR);
+        $stmt->bindValue(':category_id', $category, PDO::PARAM_INT);
+        $stmt->bindValue(':season_id', $season, PDO::PARAM_INT);
         $stmt->bindValue(':year_data', $year, PDO::PARAM_INT);
         $stmt->bindValue(':file_name', $file_name, PDO::PARAM_STR);
         $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+        $stmt->bindValue(':image', $image_name, PDO::PARAM_STR);
         $stmt->execute();
 
         return true;

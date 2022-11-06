@@ -41,43 +41,43 @@ if (isset($_SESSION['current_user'])) {
                         <p>カテゴリ</p>
                         <div class="item_box">
                             <div class="item">
-                                <input type="checkbox" name="category[]" value='life'>
+                                <input type="checkbox" name="category_id" value='1'>
                                 <span>生活習慣病</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="category[]" value='old'>
+                                <input type="checkbox" name="category_id" value='2'>
                                 <span>高齢者</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="category[]" value='infection'>
+                                <input type="checkbox" name="category_id" value='3'>
                                 <span>感染症</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="category[]" value='meal_dental'>
+                                <input type="checkbox" name="category_id" value='4'>
                                 <span>食事・口腔</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="category[]" value='mental'>
+                                <input type="checkbox" name="category_id" value='5'>
                                 <span>メンタル</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="category[]" value='work'>
+                                <input type="checkbox" name="category_id" value='6'>
                                 <span>職域</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="category[]" value='firstaid'>
+                                <input type="checkbox" name="category_id" value='7'>
                                 <span>救急</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="category[]" value='news'>
+                                <input type="checkbox" name="category_id" value='8'>
                                 <span>時事ニュース</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="category[]" value='various'>
+                                <input type="checkbox" name="category_id" value='9'>
                                 <span>その他</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="category[]" value='nocategory'>
+                                <input type="checkbox" name="category_id" value='0'>
                                 <span>指定なし</span>
                             </div>
                         </div>
@@ -88,23 +88,23 @@ if (isset($_SESSION['current_user'])) {
                         <p>時期</p>
                         <div class="item_box">
                             <div class="item">
-                                <input type="checkbox" name="season[]" value='spring'>
+                                <input type="checkbox" name="season_id" value='1'>
                                 <span>春</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="season[]" value='summer'>
+                                <input type="checkbox" name="season_id" value='2'>
                                 <span>夏</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="season[]" value='autumn'>
+                                <input type="checkbox" name="season_id" value='3'>
                                 <span>秋</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="season[]" value='winter'>
+                                <input type="checkbox" name="season_id" value='4'>
                                 <span>冬</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="season[]" value='noseason'>
+                                <input type="checkbox" name="season_id" value='0'>
                                 <span>指定なし</span>
                             </div>
                         </div>
@@ -115,10 +115,10 @@ if (isset($_SESSION['current_user'])) {
                         <p>発行年</p>
                         <div class="item_box">
                             <div class="item">
-                                <input type="number" name="year[]" value=''>
+                                <input type="number" name="year_data" value=''>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="year[]" value='noseason'>
+                                <input type="checkbox" name="year_data" value='noseason'>
                                 <span>指定なし</span>
                             </div>
                         </div>

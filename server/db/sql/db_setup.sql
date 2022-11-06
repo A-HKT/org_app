@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS files (
     id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
-    upload_file VARCHAR(255) NOT NULL,
+    image VARCHAR(255) NOT NULL,
     category_id INT NOT NULL,
     season_id INT NOT NULL,
     year_data INT NOT NULL,
