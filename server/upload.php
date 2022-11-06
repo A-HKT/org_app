@@ -85,43 +85,43 @@ if (empty($errors)) {
                             <p>カテゴリ</p>
                             <div class="item_box">
                                 <div class="item">
-                                    <input type="checkbox" name="category_id" [] value='1'>
+                                    <input type="checkbox" name="category_id" value='1'>
                                     <span>生活習慣病</span>
                                 </div>
                                 <div class="item">
-                                    <input type="checkbox" name="category_id" [] value='2'>
+                                    <input type="checkbox" name="category_id" value='2'>
                                     <span>高齢者</span>
                                 </div>
                                 <div class="item">
-                                    <input type="checkbox" name="category_id" [] value='3'>
+                                    <input type="checkbox" name="category_id" value='3'>
                                     <span>感染症</span>
                                 </div>
                                 <div class="item">
-                                    <input type="checkbox" name="category_id" [] value='4'>
+                                    <input type="checkbox" name="category_id"  value='4'>
                                     <span>食事・口腔</span>
                                 </div>
                                 <div class="item">
-                                    <input type="checkbox" name="category_id" []value='5'>
+                                    <input type="checkbox" name="category_id" value='5'>
                                     <span>メンタル</span>
                                 </div>
                                 <div class="item">
-                                    <input type="checkbox" name="category_id" [] value='6'>
+                                    <input type="checkbox" name="category_id" value='6'>
                                     <span>職域</span>
                                 </div>
                                 <div class="item">
-                                    <input type="checkbox" name="category_id" [] value='7'>
+                                    <input type="checkbox" name="category_id" value='7'>
                                     <span>救急</span>
                                 </div>
                                 <div class="item">
-                                    <input type="checkbox" name="category_id" []value='8'>
+                                    <input type="checkbox" name="category_id" value='8'>
                                     <span>時事ニュース</span>
                                 </div>
                                 <div class="item">
-                                    <input type="checkbox" name="category_id" []value='9'>
+                                    <input type="checkbox" name="category_id" value='9'>
                                     <span>その他</span>
                                 </div>
                                 <div class="item">
-                                    <input type="checkbox" name="category_id" []value='0'>
+                                    <input type="checkbox" name="category_id" value='0'>
                                     <span>指定なし</span>
                                 </div>
                             </div>

@@ -47,6 +47,53 @@ function login_validate($user_id, $email, $password)
     return $errors;
 }
 
+function getDb()
+{
+    $dbh = connect_db();
+    $sql = <<<EOM
+    SELECT
+        *
+    FROM
+        files
+    WHERE 
+        id >= 0
+    EOM;
+
+    $stmt = $dbh->query($sql);
+    return $stmt->fetchAll();
+}
+
+function getSelectedDb($select_season, $select_category)
+{
+    $dbh = connect_db();
+
+    if (empty($select_season)) {
+        $seasonIds = "1=1";
+    } else {
+        $seasonIds = "season_id IN ('" . implode("', '", $select_season) . "')";
+    }
+    if (empty($select_category)) {
+        $categoryIds = "AND 1=1";
+    } else {
+        $categoryIds = "AND category_id IN ('" . implode("', '", $select_category) . "')";
+    }
+
+
+    $sql = <<<EOM
+    SELECT
+        *
+    FROM
+        files
+    WHERE 
+        description like '%{}%' 
+        {$seasonIds} 
+        {$categoryIds} 
+    EOM;
+
+    $stmt = $dbh->query($sql);
+    return $stmt->fetchAll();
+}
+
 // ログイン時、ユーザーが登録されているか確認する関数(emailをキーにする)
 function find_user_by_email($email)
 {
@@ -148,5 +195,28 @@ function insert_file($user_id, $image_name, $category, $season, $year, $file_nam
     } catch (PDOException $e) {
         echo $e->getMessage();
         return false;
+    }
+}
+
+
+
+// 検索入力時のバリデーション関数
+function seach_validate($category, $season, $year, $file_name)
+{
+    // 初期化
+    $errors = [];
+    // エラーメッセージをconfig.phpで定義
+    if (empty($category)) {
+        $errors[] = MSG_NO_CATEGORY;
+    }
+    if (empty($season)) {
+        $errors[] = MSG_NO_SEASON;
+    }
+    if (empty($year)) {
+        $errors[] = MSG_NO_YEAR;
+    }
+    if (empty($file_name)) {
+        $errors[] = MSG_NO_FILENAME;
+        return $errors;
     }
 }
