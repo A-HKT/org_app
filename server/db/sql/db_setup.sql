@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS files (
     image VARCHAR(255) NOT NULL,
     category_id INT NOT NULL,
     season_id INT NOT NULL,
-    year_data INT NOT NULL,
+    year_id INT NOT NULL,
     file_name VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -25,8 +25,8 @@ FOREIGN KEY (category_id)
 FOREIGN KEY (season_id)
     REFERENCES seasons(season_id)
     ON DELETE RESTRICT ON UPDATE RESTRICT,
-FOREIGN KEY (year_data)
-    REFERENCES years(year_data)
+FOREIGN KEY (year_id)
+    REFERENCES years(year_id)
     ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
@@ -41,5 +41,5 @@ season VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS years (
-year_data INT NOT NULL PRIMARY KEY
-);
+year_id INT NOT NULL PRIMARY KEY,
+year VARCHAR(255) NOT NULL);
