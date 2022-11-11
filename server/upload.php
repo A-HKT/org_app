@@ -17,7 +17,7 @@ $description = '';
 $errors = [];
 $image_name = '';
 
-// ログイン状態の確認(user_idに紐づけ、ログイン時のみupload.phpにアクセス可)
+//セッション変数['current_user']に保存された値でログイン判定(user_idに紐づけ、ログイン時のみupload.phpへ)
 if (empty($_SESSION['current_user'])) {
     header('Location: login.php');
     exit;

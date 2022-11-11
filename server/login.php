@@ -12,7 +12,7 @@ $email = '';
 $password = '';
 $errors = [];
 
-// ログイン判定(ログイン済ならリダイレクト)
+// ログイン判定(ログイン済ならindex.phpへリダイレクト)
 if (isset($_SESSION['current_user'])) {
     header('Location: index.php');
     exit;

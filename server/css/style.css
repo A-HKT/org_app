@@ -267,6 +267,18 @@ textarea {
     text-align: center;
     color: #fbb75f;
 }
+.table_items {
+        display: flex;
+        width: 100%;
+            border-bottom: 2px solid #fdfcf6;
+            padding: 1em;
+}
+td {
+    display: flex;
+    width: 80%;
+    border:solid #514646;
+}
+
 
 /* フッター 
 -----------------------*/

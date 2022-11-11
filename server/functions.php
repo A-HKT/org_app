@@ -28,7 +28,7 @@ function h($str)
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
 
-// ログイン時のバリデーション関数
+// login.php ログイン時のバリデーション関数
 function login_validate($user_id, $email, $password)
 {
     // 初期化
@@ -45,53 +45,6 @@ function login_validate($user_id, $email, $password)
     }
 
     return $errors;
-}
-
-function getDb()
-{
-    $dbh = connect_db();
-    $sql = <<<EOM
-    SELECT
-        *
-    FROM
-        files
-    WHERE 
-        id >= 0
-    EOM;
-
-    $stmt = $dbh->query($sql);
-    return $stmt->fetchAll();
-}
-
-function getSelectedDb($select_season, $select_category)
-{
-    $dbh = connect_db();
-
-    if (empty($select_season)) {
-        $seasonIds = "1=1";
-    } else {
-        $seasonIds = "season_id IN ('" . implode("', '", $select_season) . "')";
-    }
-    if (empty($select_category)) {
-        $categoryIds = "AND 1=1";
-    } else {
-        $categoryIds = "AND category_id IN ('" . implode("', '", $select_category) . "')";
-    }
-
-
-    $sql = <<<EOM
-    SELECT
-        *
-    FROM
-        files
-    WHERE 
-        description like '%{}%' 
-        {$seasonIds} 
-        {$categoryIds} 
-    EOM;
-
-    $stmt = $dbh->query($sql);
-    return $stmt->fetchAll();
 }
 
 // ログイン時、ユーザーが登録されているか確認する関数(emailをキーにする)
@@ -126,7 +79,7 @@ function user_login($user)
     exit;
 }
 
-// ファイルアップロード時のバリデーション関数
+// upload.php アップロード時のバリデーション関数
 function insert_validate($upload_file, $category, $season, $year, $file_name, $description)
 {
     // 初期化
@@ -198,25 +151,101 @@ function insert_file($user_id, $image_name, $category, $season, $year, $file_nam
     }
 }
 
+// index.php 検索入力時のバリデーション関数
+// function seach_validate($category, $season, $year, $keyword)
+// {
+//     // 初期化
+//     $errors = [];
+//     // エラーメッセージをconfig.phpで定義
+//     if (empty($category)) {
+//         $errors[] = MSG_NO_CATEGORY;
+//     }
+//     if (empty($season)) {
+//         $errors[] = MSG_NO_SEASON;
+//     }
+//     if (empty($year)) {
+//         $errors[] = MSG_NO_YEAR;
+//     }
+//     if (empty($keyword)) {
+//         $errors[] = MSG_NO_KEYWORD;
+//         return $errors;
+//     }
+// }
 
-
-// 検索入力時のバリデーション関数
-function seach_validate($category, $season, $year, $file_name)
+// show.php DBからデータを参照する関数
+function get_Db()
 {
-    // 初期化
-    $errors = [];
-    // エラーメッセージをconfig.phpで定義
-    if (empty($category)) {
-        $errors[] = MSG_NO_CATEGORY;
+    $dbh = connect_db();
+    $sql = <<<EOM
+    SELECT
+        *
+    FROM
+        files
+    WHERE 
+        id >= 0
+    EOM;
+
+    $stmt = $dbh->query($sql);
+    return $stmt->fetchAll();
+}
+
+// show.php 検索(選択)されたデータを抽出する関数
+function get_Selected_Db($select_category, $select_season, $select_year)
+{
+    $where = "";
+    $dbh = connect_db();
+//implode関数で要素を結合して文字列にし、変数IDsに代入
+    if (!empty($select_category)) {
+        $where = "WHERE f.category_id IN ('" . implode("', '", $select_category) . "')";
     }
-    if (empty($season)) {
-        $errors[] = MSG_NO_SEASON;
+    if (!empty($select_season)) {
+        if (empty($where)) {
+            $where = "WHERE ";
+        } else {
+            $where .= " AND ";
+        }
+//変数に文字列を連結し再代入する場合の省略形 
+        $where .= "f.season_id IN ('" . implode("', '", $select_season) . "')";
+        // $where = $where . "season_id IN ('" . implode("', '", $select_season) . "')";
     }
-    if (empty($year)) {
-        $errors[] = MSG_NO_YEAR;
+    if (!empty($select_year)) {
+        if (empty($where)) {
+            $where = "WHERE ";
+        } else {
+            $where .= " AND ";
+        }
+//変数に文字列を連結し再代入する場合の省略形 
+        $where .= "f.year_id = " . $select_year;
+        // $where = $where . "season_id IN ('" . implode("', '", $select_season) . "')";
     }
-    if (empty($file_name)) {
-        $errors[] = MSG_NO_FILENAME;
-        return $errors;
-    }
+
+
+    $sql = <<<EOM
+    SELECT
+        f.id,
+        f.image,
+        f.file_name,
+        f.description,
+        c.category,
+        y.year,
+        s.season
+    FROM
+        files AS f
+    LEFT JOIN
+        categories AS c
+    ON
+        f.category_id = c.category_id
+    LEFT JOIN
+        years AS y
+    ON
+        f.year_id = y.year_id
+    LEFT JOIN
+        seasons AS s
+    ON
+        f.season_id = s.season_id
+    {$where}
+    EOM;
+var_dump($select_category);
+    $stmt = $dbh->query($sql);
+    return $stmt->fetchAll();
 }
