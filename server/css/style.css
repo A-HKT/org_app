@@ -194,13 +194,15 @@ textarea {
 .information a {
     color: #514646;
     font-size: 1em;
-    padding-right: 3%;
+    align-items: center;
 }
 .information span {
     color: #f8ab47;
     font-weight: bold;
 }
-
+.both_information {
+    justify-content: space-between;
+}
 
 /* エラー表示
 -----------------------*/
@@ -226,7 +228,7 @@ textarea {
 .upload h1 {
     font-size: 30px;
     text-align: center;
-    color: #b3dee0;
+    color: #f8ab47;
 }
 .upload_btn {
     background-color: #fbb75f;
@@ -236,7 +238,7 @@ textarea {
 /* ログイン画面(login)
 -----------------------*/
 .login_btn {
-    background-color: #8bd1a0;
+    background-color: #b3dee0;
     color: #fdfcf6;
 }
 .login h1 {
@@ -260,40 +262,62 @@ textarea {
     font-size: 20px;
     width: 35%;
 }
+
 /* 検索結果画面(show)
 -----------------------*/
 .show h1 {
     font-size: 30px;
     text-align: center;
-    color: #fbb75f;
+    color: #8bd1a0;
 }
-.table_items {
-        display: flex;
-        width: 100%;
-            border-bottom: 2px solid #fdfcf6;
-            padding: 1em;
+.show_form {
+    padding-bottom: 20px;
+}
+table {
+    display: block;
+    margin: auto 15px;
+    border-collapse: collapse;
+    width: auto;
+}
+tbody {
+    display: block;
+}
+tr {
+    align-items: center;
+    background-color: #fdfcf6;
+    text-align: center;
 }
 td {
-    display: flex;
-    width: 80%;
-    border:solid #514646;
+    padding: 5px;
+    border: solid 1px #e9e7e7;
+}
+th {
+    padding: 5px;
+    width: 20%;
+    background-color: #aeaeae;
+    border: solid 1px #e9e7e7;
+    color: #fdfcf6;
+}
+/* tr:nth-child(odd) {
+    background-color:;
+} */
+.id_td {
+    width: 2%
+}
+.category_td,
+.season_td {
+    width: 7%;
+}
+.year_td {
+    width: 5%;
+}
+.file_name_td {
+    width: 17%;
+}
+.description_td {
+    width: 22%;
 }
 
 
 /* フッター 
 -----------------------*/
-
-
-/* レスポンシブ */
-@media (max-width: 900px) {
-    /* upload.php */
-    form {
-    width: 70%;
-    }
-}
-
-@media (max-width: 600px) {
-    form {
-        width: 90%;
-    }
-}

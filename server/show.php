@@ -43,19 +43,37 @@ $db = get_Selected_Db($select_category, $select_season, $select_year);
     <main class="show">
         <h1>検索結果</h1>
         <form action="" method="POST">
-            <section class=" show_form form" action="" method="post">
+            <section class="show_form form" action="" method="post">
                 <h2>SHOW</h2>
-                <div class="">
-                    <p>ID, ユーザー,カテゴリ,時期,年,タイトル,詳細</p>
+                <table>
+                    <tr>
+                        <th class=id_td>ID</th>
+                        <th class=file_name_td>タイトル</th>
+                        <th class=category_td>カテゴリ</th>
+                        <th class=season_td>時期</th>
+                        <th class=year_td>発行年</th>
+                        <th class=description_td>詳細</th>
+                    </tr>
                     <?php foreach ($db as $line) : ?>
-                        <table>
-                            <td>
-                                <span><?= $line["id"] ?></span><span>, </span>
-                                <span><?= $line["category"] ?></span><span>,</span>
-                                <span><?= $line["season"] ?></span><span>,</span>
-                                <span><?= $line["year"] ?></span><span>,</span>
-                                <span><?= $line["file_name"] ?></span><span>,</span>
-                                <span><?= $line["description"] ?></span>
-                            </td>
-                        </table>
+                        <tr>
+                            <td class=id_td>
+                                <?= $line["id"] ?></td>
+                            <td class=file_name_td>
+                                <?= $line["file_name"] ?></td>
+                            <td class=category_td>
+                                <?= $line["category"] ?></td>
+                            <td class=season_td>
+                                <?= $line["season"] ?></td>
+                            <td class=year_td>
+                                <?= $line["year"] ?></td>
+                            <td class=description_td>
+                                <?= $line["description"] ?></td>
+                        </tr>
                     <?php endforeach; ?>
+                </table>
+            </section>
+            <div class="information both_information">
+                <a href="index.php">← <span>検索 </span>にもどる</a>
+                <a href="upload.php"><span>登録 </span>はこちら →</a>
+            </div>
+        </form>
