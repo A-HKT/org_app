@@ -19,8 +19,8 @@ li {
 a {
     text-decoration: none;
 }
-img {
-    max-width: 100%;
+a:-webkit-any-link {
+    color: #724d4d;
 }
 
 /* コンテンツ全体に対する指定 */
@@ -99,6 +99,9 @@ main {
 
 /* フォーム画面全体
 -----------------------*/
+.read {
+    margin: auto 15px 30px;
+}
 .form {
     width: 60%;
     background-color: #e9e7e7;
@@ -192,7 +195,7 @@ textarea {
     margin: 0 auto;
 }
 .information a {
-    color: #514646;
+    color: #aeaeae;
     font-size: 1em;
     align-items: center;
 }
@@ -286,6 +289,7 @@ tr {
     align-items: center;
     background-color: #fdfcf6;
     text-align: center;
+    height: 3em;
 }
 td {
     padding: 5px;
@@ -313,6 +317,7 @@ th {
 }
 .file_name_td {
     width: 17%;
+    font-weight: bold;
 }
 .description_td {
     width: 22%;

@@ -9,7 +9,7 @@ if (isset($_SESSION['current_user'])) {
     $current_user = $_SESSION['current_user'];
 }
 
-//index.phpで入力されたDB抽出の検索条件を受け取り、変数に代入
+//index.phpで入力されたDB抽出の検索条件を受け取り変数に代入
 if (!empty($_POST["category_id"])) {
     $select_category = $_POST["category_id"];
 } else {
@@ -28,9 +28,9 @@ if (!empty($_POST["year_id"])) {
 
 //DBからデータを抽出する
 //$db = get_Db();
+
 //DBから検索条件に該当するデータを抽出する
 $db = get_Selected_Db($select_category, $select_season, $select_year);
-
 ?>
 
 <!DOCTYPE html>
@@ -38,13 +38,15 @@ $db = get_Selected_Db($select_category, $select_season, $select_year);
 <!--ヘッダーの設定ファイルを読み込む-->
 <?php include_once __DIR__ . '/_head.html' ?>
 
-
 <body>
     <main class="show">
         <h1>検索結果</h1>
         <form action="" method="POST">
             <section class="show_form form" action="" method="post">
                 <h2>SHOW</h2>
+                <div class="read">
+                    <p>タイトルをクリックするとファイルがご覧いただけます。</p>
+                </div>
                 <table>
                     <tr>
                         <th class=id_td>ID</th>
@@ -57,17 +59,18 @@ $db = get_Selected_Db($select_category, $select_season, $select_year);
                     <?php foreach ($db as $line) : ?>
                         <tr>
                             <td class=id_td>
-                                <?= $line["id"] ?></td>
+                                <?= h($line["id"]) ?></td>
                             <td class=file_name_td>
-                                <?= $line["file_name"] ?></td>
+                                <a href= "/files/<?= h($line["image"]) ?>"> <?= h($line["file_name"]) ?></a>
+                            </td>
                             <td class=category_td>
-                                <?= $line["category"] ?></td>
+                                <?= h($line["category"]) ?></td>
                             <td class=season_td>
-                                <?= $line["season"] ?></td>
+                                <?= h($line["season"]) ?></td>
                             <td class=year_td>
-                                <?= $line["year"] ?></td>
+                                <?= h($line["year"]) ?></td>
                             <td class=description_td>
-                                <?= $line["description"] ?></td>
+                                <?= h($line["description"]) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

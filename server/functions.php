@@ -151,43 +151,22 @@ function insert_file($user_id, $image_name, $category, $season, $year, $file_nam
     }
 }
 
-// index.php 検索入力時のバリデーション関数
-// function seach_validate($category, $season, $year, $keyword)
-// {
-//     // 初期化
-//     $errors = [];
-//     // エラーメッセージをconfig.phpで定義
-//     if (empty($category)) {
-//         $errors[] = MSG_NO_CATEGORY;
-//     }
-//     if (empty($season)) {
-//         $errors[] = MSG_NO_SEASON;
-//     }
-//     if (empty($year)) {
-//         $errors[] = MSG_NO_YEAR;
-//     }
-//     if (empty($keyword)) {
-//         $errors[] = MSG_NO_KEYWORD;
-//         return $errors;
-//     }
-// }
-
 // show.php DBからデータを参照する関数
-function get_Db()
-{
-    $dbh = connect_db();
-    $sql = <<<EOM
-    SELECT
-        *
-    FROM
-        files
-    WHERE 
-        id >= 0
-    EOM;
+// function get_Db()
+// {
+//     $dbh = connect_db();
+//     $sql = <<<EOM
+//     SELECT
+//         *
+//     FROM
+//         files
+//     WHERE 
+//         id >= 0
+//     EOM;
 
-    $stmt = $dbh->query($sql);
-    return $stmt->fetchAll();
-}
+//     $stmt = $dbh->query($sql);
+//     return $stmt->fetchAll();
+// }
 
 // show.php 検索(選択)されたデータを抽出する関数
 function get_Selected_Db($select_category, $select_season, $select_year)
@@ -214,11 +193,9 @@ function get_Selected_Db($select_category, $select_season, $select_year)
         } else {
             $where .= " AND ";
         }
-//変数に文字列を連結し再代入する場合の省略形 
         $where .= "f.year_id = " . $select_year;
-        // $where = $where . "season_id IN ('" . implode("', '", $select_season) . "')";
+        // $where = $where . "year_id IN ('" . implode("', '", $select_year) . "')";
     }
-
 
     $sql = <<<EOM
     SELECT
@@ -245,7 +222,6 @@ function get_Selected_Db($select_category, $select_season, $select_year)
         f.season_id = s.season_id
     {$where}
     EOM;
-var_dump($select_category);
     $stmt = $dbh->query($sql);
     return $stmt->fetchAll();
 }

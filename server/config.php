@@ -24,6 +24,4 @@ define('MSG_NO_DESCRIPTION', '詳細を入力してください');
 define('EXTENTION', ['pdf', 'jpg', 'jpeg', 'png', 'gif', 'webp']);
 define('MSG_NOT_ABLE_EXT', '選択したファイルの拡張子が有効ではありません');
 
-// index.php 入力時のエラーメッセージ
-define('MSG_NO_KEYWORD', 'キーワードを入力してください');
 ?>

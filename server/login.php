@@ -72,7 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
             </section>
-            <div class="form_contents">
                 <input type="submit" value="ログイン" class="login_btn form_btn">
             </div>
         </form>
