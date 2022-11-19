@@ -86,8 +86,8 @@ $db = get_Selected_Db($select_category, $select_season, $select_year, $select_ke
                             <td class=description_td>
                                 <?= h($line["description"]) ?></td>
                             <td class="edit_td">
-                                <div class="edit_btn">
-                                    <a href="edit.php?id=<?= h($file['user_id']) ?>"><i class=" fa-solid fa-pen"></i></a>
+                                <div class="pen_btn">
+                                    <a href="edit.php"><i class=" fa-solid fa-pen"></i>
                                 </div>
                             </td>
                         </tr>
@@ -95,7 +95,11 @@ $db = get_Selected_Db($select_category, $select_season, $select_year, $select_ke
                 </table>
             </section>
             <div class="information both_information">
-                <a href="index.php"><i class="fa-solid fa-circle-arrow-left"></i> <span>検索 </span>にもどる</a>
-                <a href="upload.php"><span>登録 </span>はこちら <i class="fa-solid fa-circle-arrow-right"></i></a>
+                <a href="index.php"><i class="fa-solid fa-circle-arrow-left"></i> <span class=span_index>検索</span>する </a>
+                <a href="upload.php"><span class=span_upload>登録</span>する <i class="fa-solid fa-circle-arrow-right"></i></a>
             </div>
         </form>
+    </main>
+</body>
+
+</html>

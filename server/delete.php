@@ -1,6 +1,6 @@
 <?php
     // 関数ファイを読み込む
-    require_once __DIR__ . '/../common/functions.php';
+    require_once __DIR__ . '/functions.php';
 
     // セッション開始
     session_start();

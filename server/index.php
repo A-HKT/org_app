@@ -3,7 +3,7 @@
 require_once __DIR__ . '/functions.php';
 
 // セッション開始
-session_start();
+// session_start();
 // 初期化
 $current_user = '';
 $category = '';
@@ -36,9 +36,9 @@ if (isset($_SESSION['current_user'])) {
         <div class="main_title">
             <h3>見たい記事がすぐに見つかる！</h3>
             <h2>
-                <span>Article</span><br>
-                <span>Search</span><br>
-                <span>Database</span>
+                <span class="main_first">Article</span><br>
+                <span class="main_second">Search</span><br>
+                <span class="main_third">Database</span>
             </h2>
         </div>
         <img class="main_image" src="images\main_image.png" alt="main">
@@ -154,7 +154,7 @@ if (isset($_SESSION['current_user'])) {
                 </div>
             </section>
             <div class="information">
-                <a href="upload.php"><span>登録 </span>はこちら <i class="fa-solid fa-circle-arrow-right"></i></a>
+                <a href="upload.php"><span class=span_upload>登録</span>する <i class="fa-solid fa-circle-arrow-right"></i></a>
             </div>
             <div class="form_contents">
                 <input type="submit" value="検索" class="index_btn form_btn">

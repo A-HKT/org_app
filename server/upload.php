@@ -1,9 +1,10 @@
 <?php
 //設定ファイルを読み込む
 require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/config.php';
 
 // セッション開始
-// session_start();
+session_start();
 // 初期化
 $current_user = '';
 $upload_file = '';
@@ -188,7 +189,7 @@ if (empty($errors)) {
                 </div>
             </section>
             <div class="information">
-                <a href="index.php"><span>検索 </span>へもどる <i class="fa-solid fa-circle-arrow-right"></i></a>
+                <a href="index.php"><span class=span_index>検索</span>する <i class="fa-solid fa-circle-arrow-right"></i></a>
             </div>
             <div class="form_contents">
                 <div class="form_contents">

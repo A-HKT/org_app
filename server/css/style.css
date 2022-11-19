@@ -22,6 +22,10 @@ a {
 a:-webkit-any-link {
     color: #724d4d;
 }
+h1 {
+    font-size: 30px;
+    text-align: center;
+}
 
 /* コンテンツ全体に対する指定 */
 main {
@@ -79,7 +83,7 @@ main {
     margin-block-start: 0;
     margin-block-end: 0;
     font-family: 'Poppins', sans-serif;
-    font-size: 70px;
+    font-size: 60px;
     text-align: left;
     letter-spacing: 0.1em;
     line-height: 0.9em;
@@ -87,15 +91,21 @@ main {
     z-index: 1;
 }
 .main_title h3 {
-    margin: 25px auto;
+    margin: 25px auto 10px;
     color: #aeaeae;
     font-size: 20px;
 }
 .main_image {
     padding-top: 60px;
     position: relative;
-    width: 400px;
+    width: 300px;
     height: auto;
+}
+.main_second {
+    margin: 15%;
+}
+.main_third {
+    margin: 30%;
 }
 
 /* フォーム画面全体
@@ -200,15 +210,24 @@ textarea {
 }
 .information a {
     color: #aeaeae;
-    font-size: 1em;
+    font-size: 1.2em;
     align-items: center;
 }
 .information span {
-    color: #f8ab47;
     font-weight: bold;
 }
 .both_information {
     justify-content: space-between;
+    margin-bottom: 50px;
+}
+.span_index {
+    color:#8bd1a0;
+}
+.span_upload {
+    color: #f8ab47;
+}
+.span_edit {
+    color: #98d8db;
 }
 
 /* エラー表示
@@ -233,8 +252,6 @@ textarea {
 /* 登録画面(upload)
 -----------------------*/
 .upload h1 {
-    font-size: 30px;
-    text-align: center;
     color: #f8ab47;
 }
 .upload_btn {
@@ -245,12 +262,10 @@ textarea {
 /* ログイン画面(login)
 -----------------------*/
 .login_btn {
-    background-color: #b3dee0;
+    background-color: #98d8db;
     color: #fdfcf6;
 }
 .login h1 {
-    font-size: 30px;
-    text-align: center;
     color: #514646;
 }
 .login_form {
@@ -273,8 +288,6 @@ textarea {
 /* 検索結果画面(show)
 -----------------------*/
 .show h1 {
-    font-size: 30px;
-    text-align: center;
     color: #8bd1a0;
 }
 .show_form {
@@ -325,7 +338,7 @@ th {
 .edit_td {
     width: 4%;
 }
-.edit_btn {
+.pen_btn {
     display: flex;
     margin: auto;
     justify-content: center;
@@ -334,10 +347,24 @@ th {
     background-color: #f8ab47;
     border-radius: 15px;
 }
-.edit_btn i{
+.pen_btn i{
     color: #fdfcf6;
 }
-
+/* 更新画面(edit)
+-----------------------*/
+.edit h1{
+    color: #98d8db;
+}
+.edit_btn {
+    margin: 30px auto 0px;
+    background-color: #98d8db;
+    color: #fdfcf6;
+}
+.delete_btn {
+    margin: 5px auto 50px;
+    background-color: #aeaeae;
+    color: #fdfcf6;
+}
 
 /* フッター 
 -----------------------*/
