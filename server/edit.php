@@ -1,20 +1,17 @@
 <?php
-//設定ファイルを読み込む
-require_once __DIR__ . '/functions.php';
 
-// セッション開始
+//セッション開始
 session_start();
 // 初期化
 $current_user = '';
+$user_id = 0;
+$file = '';
+$description = '';
 $upload_file = '';
 $upload_tmp_file = '';
-$category = '';
-$season = '';
-$year = '';
-$file_name = '';
-$description = '';
 $errors = [];
-$image_name = '';
+
+$user_id = filter_input(INPUT_GET, 'user_id');
 
 //セッション変数['current_user']に保存された値でログイン判定(user_idに紐づけ、ログイン時のみupload.phpへ)
 if (empty($_SESSION['current_user'])) {
@@ -23,35 +20,23 @@ if (empty($_SESSION['current_user'])) {
 }
 $current_user = $_SESSION['current_user'];
 
+// user_idを基にデータを取得
+$file = find_file_by_user_id($user_id);
 
-// アップロードしたファイルの情報を受け取る
-// アップロードしたファイル(file)のファイル名($_FILES関数)
-// サーバー上で一時的に保存されるテンポラリファイル名
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $upload_file = $_FILES['image']['name'];
-    $upload_tmp_file = $_FILES['image']['tmp_name'];
-
-    // 各データを変数に格納
-    $category = filter_input(INPUT_POST, 'category_id');
-    $season = filter_input(INPUT_POST, 'season_id');
-    $year = filter_input(INPUT_POST, 'year_id');
-    $file_name = filter_input(INPUT_POST, 'file_name');
     $description = filter_input(INPUT_POST, 'description');
-
-    $errors = insert_validate($upload_file, $category, $season, $year, $file_name, $description);
-}
-// ファイルの拡張子に問題なければファイル名変更(日付を入れる)
-//filesフォルダに保存
-if (empty($errors)) {
-    $image_name = date('YmdHis') . '_' . $upload_file;
-    $path = './files/' . $image_name;
-
-    //データベースに保存できたらindex.phpにリダイレクト
-    if ((move_uploaded_file($upload_tmp_file, $path)) &&
-        insert_file($current_user['user_id'], $image_name, $category, $season, $year, $file_name, $description)
+    // アップロードした画像のファイル名
+    // 変更がない場合は画像は更新しない
+    if (
+        !empty($_FILES['image']['name']) &&
+        $_FILES['image']['name'] != $file['image']
     ) {
-        header('Location: index.php');
-        exit;
+        $upload_file = $_FILES['image']['name'];
+        // サーバー上で一時的に保存されるテンポラリファイル名
+        $upload_tmp_file = $_FILES['image']['tmp_name'];
+        $old_image = './files/' . $file['image'];
+        $image_name = date('YmdHis') . '_' . $_FILES['image']['name'];
+        $path = './files/' . $image_name;
     }
 }
 ?>
@@ -190,10 +175,13 @@ if (empty($errors)) {
             <div class="information">
                 <a href="index.php"><span>検索 </span>へもどる →</a>
             </div>
-            <div class="form_contents">
+            <?php if (!empty($current_user) && $current_user['id'] == $file['user_id']) : ?>
                 <div class="form_contents">
-                    <input type="submit" value="登録" class="upload_btn form_btn">
-                </div>
+                    <div class="form_contents">
+                        <input type="submit" value="編集" class="edit_btn form_btn"><a href="edit.php?id=<?= h($file['user_id']) ?>">
+                            <input type="submit" value="削除" class="edit_btn form_btn"><a href="edit.php?id=<?= h($file['user_id']) ?>">
+                            <?php endif; ?>
+                    </div>
         </form>
     </main>
 </body>

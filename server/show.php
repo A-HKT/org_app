@@ -1,9 +1,9 @@
 <?php
 //設定ファイルを読み込む
 require_once __DIR__ . '/functions.php';
-require_once __DIR__ . '/config.php';
 
 // セッション開始
+session_start();
 //セッション変数['current_user']に保存されている値でログイン判定
 if (isset($_SESSION['current_user'])) {
     $current_user = $_SESSION['current_user'];
@@ -25,12 +25,17 @@ if (!empty($_POST["year_id"])) {
 } else {
     $select_year = '';
 }
+if (!empty($_POST["keyword"])) {
+    $select_keyword = $_POST["keyword"];
+} else {
+    $select_keyword = '';
+}
 
 //DBからデータを抽出する
 //$db = get_Db();
 
 //DBから検索条件に該当するデータを抽出する
-$db = get_Selected_Db($select_category, $select_season, $select_year);
+$db = get_Selected_Db($select_category, $select_season, $select_year, $select_keyword);
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +56,8 @@ $db = get_Selected_Db($select_category, $select_season, $select_year);
                             <?= h($line["category"]) ?>、
                             <?= h($line["season"]) ?>、
                             <?= h($line["year"]) ?>年
-                        <?php endforeach; ?>
+                            <!?= h($line["keyword"]) ?>
+                            <?php endforeach; ?>
                         </span>
                 </div>
                 <table>
@@ -62,6 +68,7 @@ $db = get_Selected_Db($select_category, $select_season, $select_year);
                         <th class=season_td>時期</th>
                         <th class=year_td>発行年</th>
                         <th class=description_td>詳細</th>
+                        <th class=edit_td>編集</th>
                     </tr>
                     <?php foreach ($db as $line) : ?>
                         <tr>
@@ -78,6 +85,11 @@ $db = get_Selected_Db($select_category, $select_season, $select_year);
                                 <?= h($line["year"]) ?></td>
                             <td class=description_td>
                                 <?= h($line["description"]) ?></td>
+                            <td class="edit_td">
+                                <div class="edit_btn">
+                                    <a href="edit.php?id=<?= h($file['user_id']) ?>"><i class=" fa-solid fa-pen"></i></a>
+                                </div>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

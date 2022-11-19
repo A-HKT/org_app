@@ -1,7 +1,6 @@
 <?php
 //設定ファイルを読み込む
 require_once __DIR__ . '/functions.php';
-require_once __DIR__ . '/config.php';
 
 // セッション開始
 session_start();
@@ -23,7 +22,6 @@ if (isset($_SESSION['current_user'])) {
 // $season = filter_input(INPUT_POST, 'season_id');
 // $year = filter_input(INPUT_POST, 'year_id');
 // $keyword = filter_input(INPUT_POST, 'keyword');
-
 // $errors = seach_validate($category, $season, $year, $keyword);
 
 ?>
@@ -150,7 +148,7 @@ if (isset($_SESSION['current_user'])) {
                     <div class="form_items">
                         <p>キーワード</p>
                         <div class="item_box">
-                            <input type="text" name="keyword" value=''>
+                            <input type="text" name="keyword">
                         </div>
                     </div>
                 </div>

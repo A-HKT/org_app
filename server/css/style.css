@@ -301,14 +301,10 @@ td {
 }
 th {
     padding: 5px;
-    width: 20%;
     background-color: #aeaeae;
     border: solid 1px #e9e7e7;
     color: #fdfcf6;
 }
-/* tr:nth-child(odd) {
-    background-color:;
-} */
 .id_td {
     width: 2%
 }
@@ -317,14 +313,29 @@ th {
     width: 7%;
 }
 .year_td {
-    width: 5%;
+    width: 4%;
 }
 .file_name_td {
     width: 17%;
     font-weight: bold;
 }
 .description_td {
-    width: 22%;
+    width: 19%;
+}
+.edit_td {
+    width: 4%;
+}
+.edit_btn {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 2em;
+    background-color: #f8ab47;
+    border-radius: 15px;
+}
+.edit_btn i{
+    color: #fdfcf6;
 }
 
 
