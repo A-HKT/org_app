@@ -46,6 +46,13 @@ $db = get_Selected_Db($select_category, $select_season, $select_year);
                 <h2>SHOW</h2>
                 <div class="read">
                     <p>タイトルをクリックするとファイルがご覧いただけます。</p>
+                    <?php foreach ($db as $line) : ?>
+                        <span>《 検索条件 》
+                            <?= h($line["category"]) ?>、
+                            <?= h($line["season"]) ?>、
+                            <?= h($line["year"]) ?>年
+                        <?php endforeach; ?>
+                        </span>
                 </div>
                 <table>
                     <tr>
@@ -61,7 +68,7 @@ $db = get_Selected_Db($select_category, $select_season, $select_year);
                             <td class=id_td>
                                 <?= h($line["id"]) ?></td>
                             <td class=file_name_td>
-                                <a href= "/files/<?= h($line["image"]) ?>"> <?= h($line["file_name"]) ?></a>
+                                <a href="/files/<?= h($line["image"]) ?>"> <?= h($line["file_name"]) ?></a>
                             </td>
                             <td class=category_td>
                                 <?= h($line["category"]) ?></td>
@@ -76,7 +83,7 @@ $db = get_Selected_Db($select_category, $select_season, $select_year);
                 </table>
             </section>
             <div class="information both_information">
-                <a href="index.php">← <span>検索 </span>にもどる</a>
-                <a href="upload.php"><span>登録 </span>はこちら →</a>
+                <a href="index.php"><i class="fa-solid fa-circle-arrow-left"></i> <span>検索 </span>にもどる</a>
+                <a href="upload.php"><span>登録 </span>はこちら <i class="fa-solid fa-circle-arrow-right"></i></a>
             </div>
         </form>

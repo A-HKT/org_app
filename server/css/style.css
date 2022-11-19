@@ -39,31 +39,35 @@ main {
     display: flex;
     background: #b3dee0;
     width: 100%;
-    height: 50px;
+    height: 45px;
     top: 0;
     left: 0;
-    justify-content: space-between;
     align-items: center;
     position: fixed;
     z-index: 9999;
 }
-.page_header a {
-    padding: 0 10%;
-    color: #514646;
-}
-.top_menu {
-    padding: 0 10%;
-}
+
 .menu_nav {
     display: flex;
     font-size: 15px;
-    justify-content: flex-end;
-
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 20%;
+    color: #878080;
 }
-.menu_nav li {
-    float: left;
-    text-align: center;
-    width: 100px;
+.menu_nav a:-webkit-any-link {
+    color: #878080;
+}
+.menu_top {
+    font-family: 'Kiwi Maru', serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+.menu_top i{
+    color: #fdfcf6;
+}
+.logout_btn {
+    
 }
 
 /* メイン画面(ヘッダー下)
@@ -101,6 +105,9 @@ main {
 -----------------------*/
 .read {
     margin: auto 15px 30px;
+}
+.read span {
+    color: #aeaeae;
 }
 .form {
     width: 60%;
