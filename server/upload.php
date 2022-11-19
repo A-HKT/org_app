@@ -3,7 +3,7 @@
 require_once __DIR__ . '/functions.php';
 
 // セッション開始
-session_start();
+// session_start();
 // 初期化
 $current_user = '';
 $upload_file = '';
@@ -188,7 +188,7 @@ if (empty($errors)) {
                 </div>
             </section>
             <div class="information">
-                <a href="index.php"><span>検索 </span>へもどる →</a>
+                <a href="index.php"><span>検索 </span>へもどる <i class="fa-solid fa-circle-arrow-right"></i></a>
             </div>
             <div class="form_contents">
                 <div class="form_contents">

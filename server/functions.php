@@ -226,68 +226,49 @@ function get_Selected_Db($select_category, $select_season, $select_year)
     return $stmt->fetchAll();
 }
 
-//edit.php user_idが合致する場合のみ編集可能とする関数
-function find_file_by_user_id($user_id)
-{
-    $dbh = connect_db();
 
-    $sql = <<<EOM
-    SELECT 
-        * 
-    FROM 
-        files 
-    WHERE 
-        user_id = :user_id;
-    EOM;
-
-    $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
-
-//入力情報をアップデートしてデータベース(files）に登録する関数
-function
-update_file($user_id, $image_name = '', $category, $season, $year, $file_name, $description)
-{
+// //データベース(files）の情報を更新する関数
+// function
+// update_file($user_id, $image_name = '', $category, $season, $year, $file_name, $description)
+// {
     
-    try {
-        $dbh = connect_db();
+//     try {
+//         $dbh = connect_db();
 
-        $sql = <<<EOM
-        UPDATE
-            files
-            (user_id, image, category_id ,season_id, year_id, file_name, description) 
-        SET 
-            (:user_id, :image, :category_id, :season_id, :year_id, :file_name, :description);
-        EOM;
+//         $sql = <<<EOM
+//         UPDATE
+//             files
+//             (user_id, image, category_id ,season_id, year_id, file_name, description) 
+//         SET 
+//             (:user_id, :image, :category_id, :season_id, :year_id, :file_name, :description);
+//         EOM;
 
-        if (!empty($image_name)) {
-            $sql .= ', image = :image ';
-        }
-        $sql .= ' WHERE user_id = :user_id';
+//         if (!empty($image_name)) {
+//             $sql .= ', image = :image ';
+//         }
+//         $sql .= ' WHERE user_id = :user_id';
 
-        $stmt = $dbh->prepare($sql);
-        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt->bindValue(':category_id', $category, PDO::PARAM_INT);
-        $stmt->bindValue(':season_id', $season, PDO::PARAM_INT);
-        $stmt->bindValue(':year_id', $year, PDO::PARAM_INT);
-        $stmt->bindValue(':file_name', $file_name, PDO::PARAM_STR);
-        $stmt->bindValue(':description', $description, PDO::PARAM_STR);
-        if (!empty($image_name)) {
-            $stmt->bindValue(':image', $image_name, PDO::PARAM_STR);
-        }
-        $stmt->execute();
+//         $stmt = $dbh->prepare($sql);
+//         $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+//         $stmt->bindValue(':category_id', $category, PDO::PARAM_INT);
+//         $stmt->bindValue(':season_id', $season, PDO::PARAM_INT);
+//         $stmt->bindValue(':year_id', $year, PDO::PARAM_INT);
+//         $stmt->bindValue(':file_name', $file_name, PDO::PARAM_STR);
+//         $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+//         if (!empty($image_name)) {
+//             $stmt->bindValue(':image', $image_name, PDO::PARAM_STR);
+//         }
+//         $stmt->execute();
 
-        return true;
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-        return false;
-    }
-}
+//         return true;
+//     } catch (PDOException $e) {
+//         echo $e->getMessage();
+//         return false;
+//     }
+// }
 
 //データベース(files）のファイルを削除する関数
-function delete_file_by_id($user_id)
+function delete_file_by_user_id($user_id)
 {
     try {
         $dbh = connect_db();

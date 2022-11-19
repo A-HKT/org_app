@@ -13,15 +13,14 @@ $errors = [];
 
 $user_id = filter_input(INPUT_GET, 'user_id');
 
-//セッション変数['current_user']に保存された値でログイン判定(user_idに紐づけ、ログイン時のみupload.phpへ)
+// セッションにidが保持されていなければログイン画面にリダイレクト
+// パラメータを受け取れなけれらば一覧画面にリダイレクト
 if (empty($_SESSION['current_user'])) {
     header('Location: login.php');
     exit;
 }
 $current_user = $_SESSION['current_user'];
 
-// user_idを基にデータを取得
-$file = find_file_by_user_id($user_id);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = filter_input(INPUT_POST, 'description');
@@ -48,22 +47,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <main class="upload">
-        <h1>登録画面</h1>
+        <h1>更新画面</h1>
 
         <!--エラー時のエラーメッセージ出力-->
         <?php include_once __DIR__ . '/_errors.php' ?>
 
         <form action="upload.php" method="POST" enctype="multipart/form-data">
             <section class=" upload_form form">
-                <h2>RECORD</h2>
-                <div class="upload_form form_contents">
-                    <div class="form_items">
-                        <p>登録<br>ファイル</p>
-                        <div class="item_box">
-                            <input type="file" name="image" accept="image/jpeg, image/png">
-                        </div>
-                    </div>
-                </div>
+                <h2>UPDATE</h2>
                 <div class="category_form form_contents">
                     <div class="form_items">
                         <p>カテゴリ</p>
@@ -173,15 +164,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </section>
             <div class="information">
-                <a href="index.php"><span>検索 </span>へもどる →</a>
+                <a href="upload.php"><span>登録 </span>はこちら <i class="fa-solid fa-circle-arrow-right"></i></a>
             </div>
-            <?php if (!empty($current_user) && $current_user['id'] == $file['user_id']) : ?>
+            <div class="form_contents">
+                <input type="submit" value="検索" class="index_btn form_btn">
+            </div>
+        </form>
                 <div class="form_contents">
                     <div class="form_contents">
-                        <input type="submit" value="編集" class="edit_btn form_btn"><a href="edit.php?id=<?= h($file['user_id']) ?>">
+                        <input type="submit" value="編集" class="edit_btn form_btn">
                             <input type="submit" value="削除" class="edit_btn form_btn"><a href="edit.php?id=<?= h($file['user_id']) ?>">
+
+                                <button class="delete_btn form_btn" onclick="if (!confirm('本当に削除してよろしいですか？')) {return false};location.href='delete.php?id=<?= h($file['user_id']) ?>'">削 除</button>
                             <?php endif; ?>
                     </div>
+                    <div class="information">
+                <a href="index.php"><span>検索 </span>へもどる →</a>
+            </div>
         </form>
     </main>
 </body>
