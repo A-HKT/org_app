@@ -52,7 +52,7 @@ $db = get_Selected_Db($select_category, $select_season, $select_year, $select_ke
                 <div class="read">
                     <p>タイトルをクリックするとファイルがご覧いただけます。</p>
                     <?php foreach ($db as $line) : ?>
-                        <span>《 検索条件 》
+                        <span>《 検索内容 》
                             <?= h($line["category"]) ?>、
                             <?= h($line["season"]) ?>、
                             <?= h($line["year"]) ?>年

@@ -228,43 +228,43 @@ function get_Selected_Db($select_category, $select_season, $select_year)
 
 
 // //データベース(files）の情報を更新する関数
-function
-update_file($category, $season, $year, $file_name, $description)
-{
+//function
+// update_file($category, $season, $year, $file_name, $description)
+// {
     
-    try {
-        $dbh = connect_db();
+//     try {
+//         $dbh = connect_db();
 
-        $sql = <<<EOM
-        UPDATE
-            files
-            (category_id ,season_id, year_id, file_name, description) 
-        SET 
-            (:category_id, :season_id, :year_id, :file_name, :description);
-        EOM;
+//         $sql = <<<EOM
+//         UPDATE
+//             files
+//             (category_id ,season_id, year_id, file_name, description) 
+//         SET 
+//             (:category_id, :season_id, :year_id, :file_name, :description);
+//         EOM;
 
-        if (!empty($image_name)) {
-            $sql .= ', image = :image ';
-        }
-        $sql .= ' WHERE user_id = :user_id';
+//         if (!empty($image_name)) {
+//             $sql .= ', image = :image ';
+//         }
+//         $sql .= ' WHERE user_id = :user_id';
 
-        $stmt = $dbh->prepare($sql);
-        $stmt->bindValue(':category_id', $category, PDO::PARAM_INT);
-        $stmt->bindValue(':season_id', $season, PDO::PARAM_INT);
-        $stmt->bindValue(':year_id', $year, PDO::PARAM_INT);
-        $stmt->bindValue(':file_name', $file_name, PDO::PARAM_STR);
-        $stmt->bindValue(':description', $description, PDO::PARAM_STR);
-        if (!empty($image_name)) {
-            $stmt->bindValue(':image', $image_name, PDO::PARAM_STR);
-        }
-        $stmt->execute();
+//         $stmt = $dbh->prepare($sql);
+//         $stmt->bindValue(':category_id', $category, PDO::PARAM_INT);
+//         $stmt->bindValue(':season_id', $season, PDO::PARAM_INT);
+//         $stmt->bindValue(':year_id', $year, PDO::PARAM_INT);
+//         $stmt->bindValue(':file_name', $file_name, PDO::PARAM_STR);
+//         $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+//         if (!empty($image_name)) {
+//             $stmt->bindValue(':image', $image_name, PDO::PARAM_STR);
+//         }
+//         $stmt->execute();
 
-        return true;
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-        return false;
-    }
-}
+//         return true;
+//     } catch (PDOException $e) {
+//         echo $e->getMessage();
+//         return false;
+//     }
+// }
 
 //データベース(files）のファイルを削除する関数
 function delete_file_by_user_id($user_id)
@@ -289,8 +289,3 @@ function delete_file_by_user_id($user_id)
         return false;
     }
 }
-
-
-
-
-

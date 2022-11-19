@@ -188,8 +188,9 @@ if (empty($errors)) {
                     </div>
                 </div>
             </section>
-            <div class="information">
-                <a href="index.php"><span class=span_index>検索</span>する <i class="fa-solid fa-circle-arrow-right"></i></a>
+            <div class="information both_information">
+                <a href="index.php"><i class="fa-solid fa-circle-arrow-left"></i> <span class=span_index>検索</span>する </a>
+                <a href="edit.php"><span class=span_edit>更新</span>する <i class="fa-solid fa-circle-arrow-right"></i></a>
             </div>
             <div class="form_contents">
                 <div class="form_contents">

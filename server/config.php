@@ -16,7 +16,7 @@ define('MSG_EMAIL_PASSWORD_NOT_MATCH', '登録内容と合致しません');
 define('MSG_NO_FILE', 'ファイルを選択してください');
 define('MSG_NO_CATEGORY', 'カテゴリを選択してください');
 define('MSG_NO_SEASON', '発行時期を選択してください');
-define('MSG_NO_YEAR', '発行年を入力してください');
+define('MSG_NO_YEAR', '発行年を選択してください');
 define('MSG_NO_FILENAME', 'タイトルを入力してください');
 define('MSG_NO_DESCRIPTION', '詳細を入力してください');
 
