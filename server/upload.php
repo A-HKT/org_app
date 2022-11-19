@@ -117,7 +117,15 @@ if (empty($errors)) {
                                 <span>時事ニュース</span>
                             </div>
                             <div class="item">
-                                <input type="checkbox" name="category_id" value='9'>
+                                <input type="checkbox" name="category_id[]" value='9'>
+                                <span>法・手続き</span>
+                            </div>
+                            <div class="item">
+                                <input type="checkbox" name="category_id[]" value='10'>
+                                <span>イベント</span>
+                            </div>
+                            <div class="item">
+                                <input type="checkbox" name="category_id[]" value='11'>
                                 <span>その他</span>
                             </div>
                             <div class="item">
@@ -188,9 +196,8 @@ if (empty($errors)) {
                     </div>
                 </div>
             </section>
-            <div class="information both_information">
-                <a href="index.php"><i class="fa-solid fa-circle-arrow-left"></i> <span class=span_index>検索</span>する </a>
-                <a href="edit.php"><span class=span_edit>更新</span>する <i class="fa-solid fa-circle-arrow-right"></i></a>
+            <div class="information">
+                <a href="index.php"><span class=span_index>検索</span>する <i class="fa-solid fa-circle-arrow-right"></i></a>
             </div>
             <div class="form_contents">
                 <div class="form_contents">

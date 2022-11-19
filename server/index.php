@@ -36,9 +36,8 @@ if (isset($_SESSION['current_user'])) {
         <div class="main_title">
             <h3>見たい記事がすぐに見つかる！</h3>
             <h2>
-                <span class="main_first">Article</span><br>
-                <span class="main_second">Search</span><br>
-                <span class="main_third">Database</span>
+                <span class="main_first">Article Search</span><br>
+                <span class="main_second">Database</span>
             </h2>
         </div>
         <img class="main_image" src="images\main_image.png" alt="main">
@@ -88,6 +87,14 @@ if (isset($_SESSION['current_user'])) {
                             </div>
                             <div class="item">
                                 <input type="checkbox" name="category_id[]" value='9'>
+                                <span>法・手続き</span>
+                            </div>
+                            <div class="item">
+                                <input type="checkbox" name="category_id[]" value='10'>
+                                <span>イベント</span>
+                            </div>
+                            <div class="item">
+                                <input type="checkbox" name="category_id[]" value='11'>
                                 <span>その他</span>
                             </div>
                             <div class="item">

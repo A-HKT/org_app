@@ -91,7 +91,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <span>時事ニュース</span>
                                 </div>
                                 <div class="item">
-                                    <input type="checkbox" name="category_id" value='9'>
+                                    <input type="checkbox" name="category_id[]" value='9'>
+                                    <span>法・手続き</span>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="category_id[]" value='10'>
+                                    <span>イベント</span>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="category_id[]" value='11'>
                                     <span>その他</span>
                                 </div>
                                 <div class="item">
